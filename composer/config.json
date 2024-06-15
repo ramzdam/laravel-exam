@@ -1,0 +1,12 @@
+{
+    "config": {
+      "secure-http": false,
+      "disable-tls": false,
+      "preferred-install": "dist",
+      "transport-options": {
+        "http": {
+          "protocols": ["http/1.1"]
+        }
+      }
+    }
+  }
