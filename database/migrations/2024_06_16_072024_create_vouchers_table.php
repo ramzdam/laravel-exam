@@ -11,14 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('vouchers', function(Blueprint $table)
+        {
             $table->bigIncrements('id')->unsigned();
-            $table->string('pkey');
-            $table->string('uname')->unique();
-            $table->string('email')->unique();
-            $table->string('password');
+            $table->bigInteger('user_id')->unsigned();
+            $table->string('code');
             $table->timestamps();
             $table->softDeletes();
+            $table->index('user_id');
+
+            $table->foreign('user_id')
+                ->references('id')->on('users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 
@@ -27,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('vouchers');
     }
 };
