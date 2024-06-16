@@ -24,5 +24,10 @@ class Voucher extends Model
     {
         return $this->belongsTo(User::class);
     }
-
+    protected static function booted()
+    {
+        static::creating(function ($voucher) {
+            $voucher->code = generateUniqueString(self::class, 'code');
+        });
+    }
 }
