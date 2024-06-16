@@ -2,7 +2,8 @@
 
 namespace App\Http\Traits;
 
-use App\Repositories\VoucherRepository;
+use App\Models\Repositories\VoucherRepository;
+use App\Models\User;
 use App\Models\Voucher;
 
 /**
@@ -17,22 +18,29 @@ trait VoucherTrait
 	/**
      * Get all record
      *
-     * @param PlayerRepository $repository
+     * @param VoucherRepository $repository
      * @return Array
      */
-    public function getAll(PlayerRepository $repository)
+    public function getAll(VoucherRepository $repository)
     {
         return $repository->getAll();
     }
 
+    public function generateCode(VoucherRepository $repository, User $user)
+    {
+        $model = $repository->getModel();
+        $uniqueCode = generateUniqueString($model::class, 'code');
+        $voucher = $repository->save($uniqueCode, $user->id);
+        return $voucher->code;
+    }
 	/**
-     * Get individual Player record
+     * Get individual Voucher record
      *
-     * @param PlayerRepository $repository
+     * @param VoucherRepository $repository
      * @param String $code
      * @return Array
      */
-    public function get(PlayerRepository $repository, $code)
+    public function get(VoucherRepository $repository, $code)
     {
     	return $repository->get($code);
     }

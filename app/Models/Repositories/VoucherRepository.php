@@ -18,6 +18,15 @@ class VoucherRepository //implements RecordInterface
         $this->setModel($model);
     }
 
+    public function save($code, $user_id)
+    {
+        $model = $this->getModel();
+        $voucher = $model::create([
+            'code' => $code,
+            'user_id' => $user_id,
+        ]);
+        return $voucher;
+    }
     /**
      * Check if code exist in Details Table
      *

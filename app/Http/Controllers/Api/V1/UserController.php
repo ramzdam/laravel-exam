@@ -4,21 +4,18 @@ namespace App\Http\Controllers\Api\V1;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreUserRequest;
-use App\Http\Resources\UserResource;
-use App\Models\User;
+use App\Http\Traits\UserTrait;
+use App\Http\Traits\VoucherTrait;
+use App\Models\Repositories\UserRepository;
+use App\Models\Repositories\VoucherRepository;
 
 class UserController extends Controller
 {
-    //
-    public function store(StoreUserRequest $request)
+    use UserTrait, VoucherTrait;
+
+    public function __construct(UserRepository $userRepository, VoucherRepository $voucherRepository)
     {
-        // $user = User::create([
-        //     'name' => $request->name,
-        //     'email' => $request->email,
-        //     'password' => Hash::make($request->password),
-        // ]);
-        $user = User::create($request->validated());
-        return UserResource::make($user);
+    	$this->userRepository = $userRepository;
+        $this->voucherRepository = $voucherRepository;
     }
 }

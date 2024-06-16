@@ -10,9 +10,10 @@ use Illuminate\Http\Request;
 class VoucherController extends Controller
 {
     //
-    public function index()
+    public function index(Request $request)
     {
-        return VoucherResource::collection(Voucher::all());
+
+        // return VoucherResource::collection(Voucher::all());
     }
 
     public function show(Voucher $voucher)
