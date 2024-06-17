@@ -46,8 +46,9 @@ trait UserTrait
      * @param String $user_id - the unique id of the user
      * @return Collection array
      */
-    public function userVouchers($user_id)
+    public function userVouchers()
     {
+        $user_id = auth()->user()->pkey;
         $user = $this->userRepository->getById($user_id);
 
         if (!$user) {
@@ -64,8 +65,9 @@ trait UserTrait
      * @param String $user_id - the unique id of the user
      * @return json|array
      */
-    public function storeUserVouchers($user_id)
+    public function storeUserVouchers()
     {
+        $user_id = auth()->user()->pkey;
         $user = $this->userRepository->getById($user_id);
 
         if (!$user) {
@@ -87,8 +89,9 @@ trait UserTrait
      * @param String $voucher_id - the unique identifier of the voucher
      * @return Collection array
      */
-    public function destroyUserVouchers($user_id, $voucher_id)
+    public function destroyUserVouchers($voucher_id)
     {
+        $user_id = auth()->user()->pkey;
         $user = $this->userRepository->getById($user_id);
 
         if (!$user) {
