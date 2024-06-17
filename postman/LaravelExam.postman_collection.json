@@ -35,6 +35,16 @@
 		{
 			"name": "Get User Voucher",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "8|LiMVdSGMwqZDA4kfpEVWqcFSSA6wQKp5gQTEr9yKbe2f82b9",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [
 					{
@@ -44,7 +54,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/api/{{version}}/users/94987e90-6cb1-42ce-aa97-2f0387d7a996/vouchers",
+					"raw": "{{host}}/api/{{version}}/users/vouchers",
 					"host": [
 						"{{host}}"
 					],
@@ -52,7 +62,6 @@
 						"api",
 						"{{version}}",
 						"users",
-						"94987e90-6cb1-42ce-aa97-2f0387d7a996",
 						"vouchers"
 					]
 				}
@@ -81,6 +90,16 @@
 		{
 			"name": "Create User Voucher",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "8|LiMVdSGMwqZDA4kfpEVWqcFSSA6wQKp5gQTEr9yKbe2f82b9",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [
 					{
@@ -99,7 +118,7 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/api/{{version}}/users/94987e90-6cb1-42ce-aa97-2f0387d7a996/vouchers",
+					"raw": "{{host}}/api/{{version}}/users/vouchers",
 					"host": [
 						"{{host}}"
 					],
@@ -107,8 +126,41 @@
 						"api",
 						"{{version}}",
 						"users",
-						"94987e90-6cb1-42ce-aa97-2f0387d7a996",
 						"vouchers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"madzmar.ullang111@gmail.com\",\r\n    \"password\": \"password123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/{{version}}/login",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"{{version}}",
+						"login"
 					]
 				}
 			},
@@ -117,6 +169,16 @@
 		{
 			"name": "Delete User Voucher",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "8|LiMVdSGMwqZDA4kfpEVWqcFSSA6wQKp5gQTEr9yKbe2f82b9",
+							"type": "string"
+						}
+					]
+				},
 				"method": "DELETE",
 				"header": [
 					{
@@ -126,7 +188,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/api/{{version}}/users/94987e90-6cb1-42ce-aa97-2f0387d7a996/vouchers/1",
+					"raw": "{{host}}/api/{{version}}/users/vouchers/14",
 					"host": [
 						"{{host}}"
 					],
@@ -134,9 +196,8 @@
 						"api",
 						"{{version}}",
 						"users",
-						"94987e90-6cb1-42ce-aa97-2f0387d7a996",
 						"vouchers",
-						"1"
+						"14"
 					]
 				}
 			},
