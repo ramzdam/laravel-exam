@@ -27,6 +27,35 @@ class VoucherRepository //implements RecordInterface
         ]);
         return $voucher;
     }
+
+    public function getByUserId($user_id)
+    {
+        $model = $this->getModel();
+        $vouchers = $model::where('user_id', $user_id)->get();
+        return $vouchers;
+    }
+
+    public function getUserVoucherById($user_id, $voucher_id)
+    {
+        $model = $this->getModel();
+        $voucher = $model::where('user_id', $user_id)
+                        ->where('id', $voucher_id)
+                        ->first();
+        return $voucher;
+    }
+
+    public function destroy($voucher)
+    {
+        $delete = $voucher->delete();
+        return $delete;
+    }
+
+    public function getVouchers($user_id)
+    {
+        $model = $this->getModel();
+        $vouchers = $model::where('user_id', $user_id)->get();
+        return $vouchers;
+    }
     /**
      * Check if code exist in Details Table
      *
