@@ -11,7 +11,13 @@
 			"name": "Get Voucher List",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "{{host}}/api/{{version}}/vouchers",
 					"host": [
@@ -30,7 +36,13 @@
 			"name": "Get User Voucher",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "{{host}}/api/{{version}}/users/94987e90-6cb1-42ce-aa97-2f0387d7a996/vouchers",
 					"host": [
