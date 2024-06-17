@@ -34,6 +34,12 @@ class UserRepository
         return $user;
     }
 
+    /**
+     * Get user detail by user pkey or public key
+     *
+     * @param string $user_id - User public key
+     * @return array
+     */
     public function getById($user_id)
     {
         $model = $this->getModel();

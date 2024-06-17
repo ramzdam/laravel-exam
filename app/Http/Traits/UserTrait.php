@@ -18,6 +18,12 @@ use App\Events\UserRegistered;
  */
 trait UserTrait
 {
+    /**
+     * Create new user
+     *
+     * @param StoreUserRequest $request - Contains the request for storing new user
+     * @return array
+     */
     public function store(StoreUserRequest $request)
     {
         $user = $this->userRepository->save($request);
@@ -32,9 +38,14 @@ trait UserTrait
                 'token' => $token
             ],
         ]);
-        // return UserResource::make($user);
     }
 
+    /**
+     * Retrieve the vouchers of the user
+     *
+     * @param String $user_id - the unique id of the user
+     * @return Collection array
+     */
     public function userVouchers($user_id)
     {
         $user = $this->userRepository->getById($user_id);
@@ -47,6 +58,12 @@ trait UserTrait
         return VoucherResource::collection($userVouchers);
     }
 
+    /**
+     * Create a new voucher for the user
+     *
+     * @param String $user_id - the unique id of the user
+     * @return json|array
+     */
     public function storeUserVouchers($user_id)
     {
         $user = $this->userRepository->getById($user_id);
@@ -63,7 +80,13 @@ trait UserTrait
 
         return VoucherResource::make($voucher);
     }
-
+    /**
+     * Delete user voucher
+     *
+     * @param String $user_id - the unique id of the user
+     * @param String $voucher_id - the unique identifier of the voucher
+     * @return Collection array
+     */
     public function destroyUserVouchers($user_id, $voucher_id)
     {
         $user = $this->userRepository->getById($user_id);

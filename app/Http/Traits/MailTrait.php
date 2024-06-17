@@ -12,14 +12,20 @@ use App\Mail\WelcomeMail;
  */
 trait MailTrait
 {
-
+    /**
+     * Send mail using Mail Service
+     * @param $toEmailAddress - Contains the email address on where to send the mail
+     * @param $welcomeMessage - Contains the message to send
+     * @return json|array
+     */
 	public function sendMail($toEmailAddress, $welcomeMessage)
     {
         try {
             $response = Mail::to($toEmailAddress)->send(new WelcomeMail($welcomeMessage));
-            // dd($response);
-        } catch(Exception $e) {
 
+            return response()->json(['message' => 'Mail successfully sent!'], 200);
+        } catch(Exception $e) {
+            return response()->json(['message' => 'Failed to send mail. ' . $e->getMessage()], 500);
         }
     }
 }

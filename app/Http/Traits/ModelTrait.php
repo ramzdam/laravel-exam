@@ -10,7 +10,7 @@ namespace App\Http\Traits;
  * where queries are issued against the model object multiple times
  * in a request.
  *
- * To achieve this it stores the class name of the model in the propery
+ * To achieve this it stores the class name of the model in the property
  * rather than the model name.  A new object of the model is created
  * each time the getModel() function is called.
  *

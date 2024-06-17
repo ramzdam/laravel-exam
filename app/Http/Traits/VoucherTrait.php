@@ -25,7 +25,13 @@ trait VoucherTrait
     {
         return $repository->getAll();
     }
-
+    /**
+     * Generate a unique voucher code
+     *
+     * @param VoucherRepository $repository - Contain voucher repository instance to access voucher model
+     * @param User $user - Contain user model
+     * @return String
+     */
     public function generateCode(VoucherRepository $repository, User $user)
     {
         $model = $repository->getModel();
@@ -46,6 +52,13 @@ trait VoucherTrait
     	return $repository->get($code);
     }
 
+    /**
+     * Create new Voucher for the user
+     *
+     * @param VoucherRepository $repository - Contain voucher repository instance to access voucher model
+     * @param User $user - Contain user model
+     * @return Voucher $voucher
+     */
     public function createVoucher(VoucherRepository $repository, User $user)
     {
         $model = $repository->getModel();
