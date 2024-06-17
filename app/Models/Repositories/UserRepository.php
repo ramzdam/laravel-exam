@@ -33,4 +33,16 @@ class UserRepository
         $user = $model::create($request->validated());
         return $user;
     }
+
+    public function getById($user_id)
+    {
+        $model = $this->getModel();
+        $user = $model::where('pkey', $user_id)->first();
+
+        if(!$user) {
+            return [];
+        }
+
+        return $user;
+    }
 }
